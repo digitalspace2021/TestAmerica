@@ -1,0 +1,36 @@
+<div class="container">
+    <form [formGroup]="form">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-5">
+                <label class="form-label"> Fecha inicial </label>
+                <input type="text" class="form-control" formControlName="fechaInicial">
+            </div>
+            <div class="col-5">
+                <label class="form-label"> Fecha Final </label>
+                <input type="text" class="form-control" formControlName="fechaFinal">
+            </div>
+            <div class="col-2">
+                <br>
+                <button type="submit" class="btn btn-primary" (click)="operate()"> Buscar </button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <table class="table table-hover table-sm text-center">
+        <thead class="table-dark">
+            <tr>
+                <th> Departamento</th>
+                <th> Total Ventas</th>
+            </tr>
+        </thead>
+        <tBody>
+            <tr *ngFor="let item of items">
+                <td> {{ item.TotalVentas }} </td>
+                <td> {{ item.Departamento }} </td>
+            </tr>
+        </tBody>
+    </table>
+</div>

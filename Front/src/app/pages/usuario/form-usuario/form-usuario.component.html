@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="modal-header">
+        <h4 class="modal-title" *ngIf="!usuario"> Agregar Usuario<i class="fa-solid fa-plus"></i> </h4>
+        <h4 class="modal-title" *ngIf="usuario"> Edicion Usuario<i class="fa-solid fa-pencil"></i> </h4>
+    </div>
+
+    <form [formGroup]="form">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+
+                    <label class="form-label"> nombre </label>
+                    <input type="text" class="form-control" formControlName="nombre">
+
+                    <!-- <label class="form-label"> Nombre </label>
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="userName">
+
+                    <label class="form-label"> Departamentos </label>
+                    <select name="" id="">
+                      <option *ngFor="let item of departamentos" value="item.id">{{item.nombre}}</option>
+                    </select> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" (click)="closeModal()"> Cancelar </button>
+            <button type="submit" class="btn btn-primary" *ngIf="!usuario" (click)="operate()" [disabled]="form.invalid">
+        Guardar </button>
+            <button type="submit" class="btn btn-primary" *ngIf="usuario" (click)="operate()" [disabled]="form.invalid">
+        Actualizar </button>
+        </div>
+    </form>
+</div>
