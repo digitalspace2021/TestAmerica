@@ -87,6 +87,34 @@ namespace Web.Controllers
         }
 
         /// <summary>
+        /// Obtener comisiones por vendedor
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetComisionByVendedor")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<PedidoDto>>>> GetComisionByVendedor(int year, int month)
+        {
+            try
+            {
+                var data = await business.GetComisionByVendedor(year, month);
+
+                if (data == null)
+                {
+                    var responseNull = new ApiResponse<IEnumerable<PedidoDto>>(null, false, "Registro no encontrado", null);
+                    return NotFound(responseNull);
+                }
+
+                var response = new ApiResponse<IEnumerable<PedidoDto>>(data, true, "Ok", null);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var response = new ApiResponse<IEnumerable<PedidoDto>>(null, false, ex.Message.ToString(), null);
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
+        }
+
+        /// <summary>
         /// Obtener todo select
         /// </summary>
         /// <param name="GetAllSelect"></param>

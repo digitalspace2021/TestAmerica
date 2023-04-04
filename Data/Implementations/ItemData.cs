@@ -41,11 +41,11 @@ namespace Data.Implementations
                                 inner join CLIENTE AS C ON C.CODCLI = PED.CLIENTE
                                 inner join CIUDAD AS CIU ON CIU.CODCIU = C.CIUDAD
                                 inner join DEPARTAMENTO AS DEP ON DEP.CODDEP = CIU.DEPARTAMENTO
-                                WHERE PED.FECHA between ('2013/06/29 01:48:00') and ('2017/09/01 12:00:00')
+                                WHERE PED.FECHA between (@fechaInicial) and (@fechaFinal)
                                 GROUP BY DEP.NOMBRE
                                 ORDER BY Departamento ASC";
 
-            var IEn = await this.context.QueryAsync<ItemDto>(sql);
+            var IEn = await this.context.QueryAsync<ItemDto>(sql, new { fechaInicial = fechaInicial , fechaFinal = fechaFinal });
             return IEn;
         }
 

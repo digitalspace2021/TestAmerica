@@ -7,6 +7,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { FormUsuarioComponent } from './usuario/form-usuario/form-usuario.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ItemComponent } from './item/item/item.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ItemComponent } from './item/item/item.component';
     UsuarioComponent,
     FormUsuarioComponent,
     ItemComponent,
+    PedidoComponent,
   ],
   imports: [
     CommonModule,

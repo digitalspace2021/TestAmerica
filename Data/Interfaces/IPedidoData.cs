@@ -13,7 +13,7 @@ namespace Data.Interfaces
         Task<PagedListDto<PedidoDto>> GetDatatable(QueryFilterDto filter);
         Task<IEnumerable<PedidoDto>> GetAll();
 
-        //Task<IEnumerable<PedidoDto>> GetComisionByVendedor();
+        Task<IEnumerable<PedidoDto>> GetComisionByVendedor(int year, int month);
 
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
         Task<Pedido> GetById(int id);

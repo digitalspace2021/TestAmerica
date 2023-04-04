@@ -4,6 +4,6 @@ export interface Item {
     Precio : number;
     Cantidad: number;
     Subtotal: number;
-    TotalVentas: number;
-    Departamento : string;
+    totalVentas: number;
+    departamento : string;
 }

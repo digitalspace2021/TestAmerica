@@ -41,6 +41,23 @@ namespace Data.Implementations
             return IEn;
         }
 
+        public async Task<IEnumerable<PedidoDto>> GetComisionByVendedor(int year, int month)
+        {
+            var sql = @"  SELECT 
+                                V.NOMBRE AS Vendedor, 
+                                SUM(I.SUBTOTAL) * 0.01 AS Comision 
+                                FROM PEDIDO AS P
+                                inner join ITEMS AS I ON I.NUMPEDIDO = P.NUMPEDIDO
+                                inner join CLIENTE AS C ON C.CODCLI = P.CLIENTE
+                                inner join VENDEDOR AS V ON V.CODVEND = P.VENDEDOR
+                                inner join CIUDAD AS CIU ON CIU.CODCIU = C.CIUDAD
+                                inner join DEPARTAMENTO AS DEP ON DEP.CODDEP = CIU.DEPARTAMENTO
+                                WHERE MONTH(P.FECHA) = @MONTH AND YEAR(P.FECHA) = @YEAR
+                                GROUP BY V.NOMBRE";
+            var IEn = await this.context.QueryAsync<PedidoDto>(sql, new { YEAR = year, MONTH = month });
+            return IEn;
+        }
+
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             var sql = @"SELECT 
@@ -94,5 +111,7 @@ namespace Data.Implementations
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
         }
+
+
     }
 }

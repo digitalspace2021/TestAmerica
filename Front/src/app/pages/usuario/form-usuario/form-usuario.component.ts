@@ -69,7 +69,7 @@ export class FormUsuarioComponent implements OnInit {
 
   operate() {
     let rawValuesForm = this.form.getRawValue();
-
+    console.log(rawValuesForm);
     let usuario = {
       ...rawValuesForm
     }

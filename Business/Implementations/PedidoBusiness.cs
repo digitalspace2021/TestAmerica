@@ -44,6 +44,11 @@ namespace Business.Implementations
             return productoDto;
         }
 
+        public async Task<IEnumerable<PedidoDto>> GetComisionByVendedor(int year, int month)
+        {
+            return await this.data.GetComisionByVendedor(year, month);
+        }
+
         public async Task<PagedListDto<PedidoDto>> GetDatatable(QueryFilterDto filters)
         {
             return await this.data.GetDatatable(filters);

@@ -11,6 +11,7 @@ namespace Business.Interfaces
     {
         Task<PagedListDto<PedidoDto>> GetDatatable(QueryFilterDto filters);
         Task<IEnumerable<PedidoDto>> GetAll();
+        Task<IEnumerable<PedidoDto>> GetComisionByVendedor(int year, int month);
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
         Task<PedidoDto> GetById(int id);
         Task<Pedido> Save(PedidoDto entity);

@@ -4,12 +4,12 @@
         <br>
         <div class="row">
             <div class="col-5">
-                <label class="form-label"> Fecha inicial </label>
-                <input type="datetime-local" class="form-control" formControlName="fechaInicial">
+                <label class="form-label"> Año</label>
+                <input type="text" class="form-control" formControlName="year">
             </div>
             <div class="col-5">
-                <label class="form-label"> Fecha Final </label>
-                <input type="datetime-local" class="form-control" formControlName="fechaFinal">
+                <label class="form-label"> Mes </label>
+                <input type="text" class="form-control" formControlName="month">
             </div>
             <div class="col-2">
                 <br>
@@ -22,15 +22,14 @@
     <table class="table table-hover table-sm text-center">
         <thead class="table-dark">
             <tr>
-                <th> Departamento</th>
-                <th> Total Ventas</th>
+                <th> Vendedor</th>
+                <th> Comisión</th>
             </tr>
         </thead>
         <tBody>
-            <tr *ngFor="let item of items">
-                <td> {{ item.departamento }} </td>
-                <td> {{ item.totalVentas }} </td>
-
+            <tr *ngFor="let pedido of pedidos">
+                <td> {{ pedido.vendedor }} </td>
+                <td> {{ pedido.comision }} </td>
             </tr>
         </tBody>
     </table>
